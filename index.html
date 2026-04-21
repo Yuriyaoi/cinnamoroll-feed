@@ -11,7 +11,11 @@
     <h2 style="color: #FFB6C1;">Care Points: <span id="score">0</span></h2>
     <p id="status-text" style="color: #555;">กำลังหิวโหย...</p>
 
-    <button onclick="feedCinnamoroll()" style="background-color: white; border: 2px solid #87CEEB; border-radius: 10px; margin: 10px; padding: 15px 30px; cursor: pointer; font-size: 20px; ">
+    <button onclick="feedCinnamoroll()" style="background-color: white; border: 2px solid #87CEEB; border-radius: 10px; margin: 10px; padding: 15px 30px; cursor: pointer; font-size: 20px;
+	/* คำสั่งห้ามซูมเวลาจิ้มรัวๆ */
+    touch-action: manipulation;  
+    /* แถม: ป้องกันไม่ให้ขึ้นแถบไฮไลต์สีฟ้าเวลาจิ้ม*/
+    -webkit-tap-highlight-color: transparent; ">
         ป้อนขนมให้น้อง 🧁
     </button>
 </div>
