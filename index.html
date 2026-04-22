@@ -1,55 +1,23 @@
 <head>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Cinnamoroll Care Sim</title>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-<div style="text-align: center; font-family: 'Courier New', Courier, monospace;">
-    <h1 style="color: #87CEEB;">Cinnamoroll Care Sim</h1>
-    
-    <img id="cinnamoroll-img" src="cinnamoroll_thin.png" alt="Cinnamoroll" style="width: 200px; transition: width 0.3s ease;">
-    
-    <h2 style="color: #FFB6C1;">Care Points: <span id="score">0</span></h2>
-    <p id="status-text" style="color: #555;">กำลังหิวโหย...</p>
+    <div class="game-container">
+<h1 class="game-title">Cinnamoroll Care Sim</h1>
 
-    <button onclick="feedCinnamoroll()" style="background-color: white; border: 2px solid #87CEEB; border-radius: 10px; margin: 10px; padding: 15px 30px; cursor: pointer; font-size: 20px;
-	/* คำสั่งห้ามซูมเวลาจิ้มรัวๆ */
-    touch-action: manipulation;  
-    /* แถม: ป้องกันไม่ให้ขึ้นแถบไฮไลต์สีฟ้าเวลาจิ้ม*/
-    -webkit-tap-highlight-color: transparent; ">
-        ป้อนขนมให้น้อง 🧁
-    </button>
-</div>
+    <img id="cinnamoroll-img" src="cinnamoroll_thin.png" alt="Cinnamoroll">
+
+    <h2 class="score-text">Care Points: <span id="score">0</span></h2>
+    <p id="status-text">กำลังหิวโหย...</p>
+
+        <button onclick="feedCinnamoroll()" class="feed-button">
+            ป้อนขนมให้น้อง 🧁
+        </button>
+    </div>
 </body>
+
 </html>
-<script>
-(function() {
-    let score = 0; // ตัวแปรเก็บคะแนน เริ่มที่ 0
-
-    // ส่วน Logic (Process)
-    window.feedCinnamoroll = function() {
-        score = score + 1; // บวกเพิ่มทีละหนึ่ง
-        document.getElementById("score").innerText = score; // โชว์คะแนนใหม่
-
-        let img = document.getElementById("cinnamoroll-img");
-        let status = document.getElementById("status-text");
-
-        // 🧠 นี่คือ Logic Range (0-50, 51-80, 81+)
-        if (score <= 30) {
-            // State: ผอมโซ
-            img.src = "cinnamoroll_thin.png"; 
-            img.style.width = "250px";
-            status.innerText = "กำลังหิวโหย...";
-        } else if (score <= 80) {
-            // State: เริ่มมีกิน
-            img.src = "cinnamoroll_normal.png"; 
-            img.style.width = "300px"; // ขยายขนาดนิดหน่อย
-            status.innerText = "เริ่มมีแก้มแล้ว!";
-        } else {
-            // State: SUPER FAT (เวอร์ชันพุงป่องอิ่มจนเดินไม่ไหว!)
-            img.src = "cinnamoroll_super_fat.png"; 
-            img.style.width = "400px"; // ขยายร่างใหญ่สุดๆ
-            status.innerText = "อิ่มจนพุงกาง เดินไม่ไหวแล้ว!! (Super Fat)";
-        }
-    };
-})();
-</script>
+<script src="app.js"></script>
