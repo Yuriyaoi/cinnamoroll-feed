@@ -40,9 +40,9 @@ body {
     padding: 15px 30px;
     cursor: pointer;
     font-size: 20px;
-    
+
     /* คำสั่งห้ามซูมเวลาจิ้มรัวๆ */
-    touch-action: manipulation;  
+    touch-action: manipulation;
 
     /* ป้องกันไม่ให้ขึ้นแถบไฮไลต์สีฟ้าเวลาจิ้ม (สำหรับ Mobile) */
     -webkit-tap-highlight-color: transparent;
@@ -55,14 +55,33 @@ body {
 }
 
 .feed-button:hover {
-    background-color: #f0faff; /* เปลี่ยนสีนิดๆ เวลาเอาเมาส์ชี้ */
-    transform: scale(1.05);   /* ขยายขึ้นนิดนึงให้ดูมีมิติ */
+    background-color: #f0faff;
+    /* เปลี่ยนสีนิดๆ เวลาเอาเมาส์ชี้ */
+    transform: scale(1.05);
+    /* ขยายขึ้นนิดนึงให้ดูมีมิติ */
 }
 
 .feed-button:active {
-    transform: scale(0.95);    /* ยุบตัวลงเวลาถูกกดจริง */
+    transform: scale(0.95);
+    /* ยุบตัวลงเวลาถูกกดจริง */
     background-color: #e0f0ff;
     transition: transform 0.1s;
+}
+
+.candy-fly {
+    position: fixed;
+    font-size: 50px;
+    /* ใหญ่ขึ้นนิดนึงจะได้เห็นชัดๆ */
+    z-index: 100;
+    pointer-events: none;
+    /* transition: เน้นที่ left เพื่อให้มันเลื่อนจากซ้ายไปขวา */
+    transition: left 0.5s ease-out, opacity 0.3s ease-in, transform 0.3s;
+}
+
+.candy-fade {
+    opacity: 0;
+    transform: scale(0.5);
+    /* ให้ดูเหมือนน้องงับจนเล็กลงแล้วหายไป */
 }
 
 #hunger-bar-container {
