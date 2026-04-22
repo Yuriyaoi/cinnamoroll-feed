@@ -10,6 +10,7 @@
         const sweets = ['🍪', '🍩', '🍰', '🧁', '🍭']; // สุ่มขนมจะได้ไม่เบื่อ
         candy.innerText = sweets[Math.floor(Math.random() * sweets.length)];
         document.body.appendChild(candy);
+        const sound = document.getElementById('eat-sound');
 
         // 2. ฟังก์ชันช่วยหาตำแหน่งปัจจุบันของรูปน้อง
         const getTargetPos = () => {
@@ -31,10 +32,13 @@
             candy.style.opacity = '1';
             candy.style.left = (currentPos.x - 50) + 'px';
             candy.style.top = currentPos.y + 'px'; // อัปเดต Y ให้ตรงปากพอดี
+
         }, 50);
 
         // 4. กินเสร็จแล้วลบออก
         setTimeout(() => {
+            sound.currentTime = 0; // Reset เสียงให้เริ่มใหม่ทุกครั้งที่กด (ป้องกันรัวปุ่มแล้วเสียงไม่ขึ้น)
+            sound.play();
             candy.classList.add('candy-fade'); // ค่อยๆ จาง
             setTimeout(() => candy.remove(), 500); // ลบออกจากหน้าเว็บ
             updateUI();
@@ -57,17 +61,17 @@
         // 🧠 นี่คือ Logic Range (0-50, 51-80, 81+)
         if (score <= 30) {
             // State: ผอมโซ
-            img.src = "cinnamoroll_thin.png";
+            img.src = "assets/images/cinnamoroll_thin.png";
             img.style.width = "250px";
             status.innerText = "กำลังหิวโหย...";
         } else if (score <= 80) {
             // State: เริ่มมีกิน
-            img.src = "cinnamoroll_normal.png";
+            img.src = "assets/images/cinnamoroll_normal.png";
             img.style.width = "300px"; // ขยายขนาดนิดหน่อย
             status.innerText = "เริ่มมีแก้มแล้ว!";
         } else {
             // State: SUPER FAT (เวอร์ชันพุงป่องอิ่มจนเดินไม่ไหว!)
-            img.src = "cinnamoroll_super_fat.png";
+            img.src = "assets/images/cinnamoroll_super_fat.png";
             img.style.width = "400px"; // ขยายร่างใหญ่สุดๆ
             status.innerText = "อิ่มจนพุงกาง เดินไม่ไหวแล้ว!! (Super Fat)";
         }
@@ -76,7 +80,7 @@
         // ถ้ามีใครพยายามเปลี่ยนคะแนนจาก Console...
         alert("แกพยายามแฮ็กน้องชินนาม่อนเหรอ?!");
         document.body.classList.add('nightmare-mode');
-        document.getElementById('cinnamoroll-img').src = 'nightmare.png';
+        document.getElementById('cinnamoroll-img').src = 'assets/images/nightmare.png';
         document.getElementById('status-text').innerText = "แกทำอะไรลงไป...";
     }
 })();
