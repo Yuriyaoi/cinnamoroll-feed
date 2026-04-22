@@ -27,4 +27,19 @@
             status.innerText = "อิ่มจนพุงกาง เดินไม่ไหวแล้ว!! (Super Fat)";
         }
     };
+    // ดักจับการพยายามแฮ็กตัวแปร score
+    Object.defineProperty(window, 'score', {
+        set: function (value) {
+            triggerNightmare();
+        }
+    });
+
+    function triggerNightmare() {
+        // ถ้ามีใครพยายามเปลี่ยนคะแนนจาก Console...
+        alert("แกพยายามแฮ็กน้องชินนาม่อนเหรอ?!");
+        document.body.classList.add('nightmare-mode');
+        document.getElementById('cinnamoroll-img').src = 'nightmare.png';
+        document.getElementById('status-text').innerText = "แกทำอะไรลงไป...";
+    }
 })();
+

@@ -40,7 +40,7 @@ body {
     padding: 15px 30px;
     cursor: pointer;
     font-size: 20px;
-
+    
     /* คำสั่งห้ามซูมเวลาจิ้มรัวๆ */
     touch-action: manipulation;  
 
@@ -49,6 +49,9 @@ body {
 
     /* แถม: เพิ่มลูกเล่นเวลาเอาเมาส์ไปชี้ */
     transition: 0.2s;
+
+    user-select: none;
+    -webkit-user-select: none;
 }
 
 .feed-button:hover {
@@ -58,6 +61,8 @@ body {
 
 .feed-button:active {
     transform: scale(0.95);    /* ยุบตัวลงเวลาถูกกดจริง */
+    background-color: #e0f0ff;
+    transition: transform 0.1s;
 }
 
 #hunger-bar-container {
